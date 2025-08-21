@@ -44,3 +44,12 @@ async def lottery(request_dto: Annotated[RunLotteryRequestDto, Query()]) -> RunL
         count_to_draw=5,
         user_numbers=request_dto.numbers,
     )
+
+
+@app.get(
+        "/api/v1/tombola/{code}",
+        summary="Run lottery",
+        tags=["Lottery"],
+    )
+async def lottery(code: int) -> bool:
+    return code == 54687
