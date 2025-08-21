@@ -10,13 +10,17 @@ async def run_lottery(num_range_start: int, num_range_end: int, count_to_draw: i
         return RunLotteryResponseDto(
             win=True,
             message="Congratulations! You won!",
+            winning_numbers=f"The winning numbers where: {str(winning_numbers)}"
         )
-    if user_numbers == [num_range_end for _ in range(count_to_draw)]:
+    lucky_numbers = [num_range_end for _ in range(count_to_draw)]
+    if user_numbers == lucky_numbers:
         return RunLotteryResponseDto(
                 win=True,
                 message="Congratulations! You entered the lucky numbers!",
+                winning_numbers=f"The lucky numbers are: {str(lucky_numbers)}"
             )
     return RunLotteryResponseDto(
                 win=True,
                 message="Sorry, please try again next time.",
+                winning_numbers=f"The winning numbers where: {str(winning_numbers)}"
             )
